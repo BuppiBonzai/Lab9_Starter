@@ -91,7 +91,7 @@
       <button onclick="console.time()">Start Timer</button>
       <button onclick="console.timeEnd()">End Timer</button>
       <button onclick="console.trace()">Console Trace</button>
-      <button>Trigger a Global Error</button>
+      <button onclick="throw new Error('Global Error?')">Trigger a Global Error</button>
     </section>
   </main>
 
@@ -120,10 +120,19 @@
     try {
       let a = JSON.parse(json1);
       throw new MyError("Idk what this does");
-
+      let b = JSON.parse(json2);
     } catch(err) {
       console.log(err)
     }
+    
+    window.onerror = (a,b,c,d,e) => {
+      console.log(`message: ${a}`);
+      console.log(`source: ${b}`);
+      console.log(`lineno: ${c}`);
+      console.log(`colno: ${d}`);
+      console.log(`error: ${e}`);
+    }
+
   </script>
 </body>
 
