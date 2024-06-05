@@ -121,7 +121,8 @@
       throw new MyError("Idk what this does");
       let b = JSON.parse(json2);
     } catch(err) {
-      console.log(err)
+      TrackJS.track(err);
+      console.log(err);
     }
     
     window.onerror = (a,b,c,d,e) => {
@@ -130,6 +131,7 @@
       console.log(`lineno: ${c}`);
       console.log(`colno: ${d}`);
       console.log(`error: ${e}`);
+      TrackJS.track(e);
     }
 
   </script>
